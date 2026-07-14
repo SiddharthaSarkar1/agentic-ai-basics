@@ -1,3 +1,5 @@
 # Agentic AI Basics
 
-## Sequential Flow
+## Sequential Workflow
+## Parallel Workflow
+
