@@ -30,7 +30,7 @@ def editor_node(state: PipelineState) -> dict:
 
     return { "edited_text": response.content.strip() }
 
-def scriptwriter_node(state: Pipelinestate) -> dict:
+def scriptwriter_node(state: PipelineState) -> dict:
     """Stage - 2: Formats the clean text into an engaging video script style."""
 
     print("\n--- [Stage 2] Executing Scriptwriter Node ---")
@@ -42,10 +42,11 @@ def scriptwriter_node(state: Pipelinestate) -> dict:
         f"Edited Text:\n{state['edited_text']}"
     )
     
-    response = llm.invoke(Prompt)
+    response = llm.invoke(prompt)
+    
     return {"script_text": response.content.strip()}
 
-def translator_node(state: pipelinestate) -> dict:
+def translator_node(state: PipelineState) -> dict:
     """Stage - 3: Translates the script into natural flowing Hinglish."""
 
     print("\n--- [Stage 3] Executing Hinglish Translator Node ---")
@@ -67,7 +68,7 @@ def translator_node(state: pipelinestate) -> dict:
 # For creating the graph we have to connect these nodes, for that we have to use the edges
 # Edges a very important to create workflows
 
-from langgraph.graph import StateGraph, START, editor_node
+from langgraph.graph import StateGraph, START, END
 
 # create the graph. Also will add the state in it.
 
@@ -90,3 +91,11 @@ graph.add_edge("translator", END)
 
 app = graph.compile()
 
+result = app.invoke({
+    "raw_input" :"AI agents are the future of tech. They can think, plan, and act on their own. LangGraph helps you build these agents with proper control and memory."
+})
+
+# Output 
+
+print("your result are : - \n\n")
+print(result['final_output'])
