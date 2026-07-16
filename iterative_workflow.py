@@ -20,10 +20,10 @@ tools = [search_tool]
 
 # Writer
 writer_llm = ChatMistralAI(model="mistral-small-2506", temperature=0.7)
-writer_llm_with_tools = writer_llm.build_tools(tools)
+writer_llm_with_tools = writer_llm.bind_tools(tools)
 
 # Reviewer
-retriever_llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.2)
+reviewer_llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.2)
 
 # Build the State 
 
