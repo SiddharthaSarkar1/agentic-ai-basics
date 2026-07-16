@@ -139,7 +139,7 @@ graph.add_node("fee_rag",fee_rag_node)
 graph.add_node("general",general_node)
 graph.add_node("response",response_node)
 
-# Step - 6: add Edges 
+# Step - 6: Add Edges 
 
 graph.add_edge(START,"classifier")
 
@@ -157,20 +157,21 @@ app = graph.compile()
 
 # Step - 6: Run the code 
 
-print("welcome to the College assistant \n\n")
+print("Welcome to the College Assistant \n\n")
 
 print("which programe are you in ")
 print("1. BCA")
 print("2. BBA")
 print("3. B.com (H)")
 
-choice = input("\nEnter 1, 2 or 3 ")
+choice = input("\nEnter 1, 2 or 3: \n")
 
 programme_map = {
     "1": "BCA",
     "2": "BBA",
     "3": "B.Com (H)"
 }
+
 student_programme = programme_map.get(choice, "BCA")
 
 print(f"\nGreat! You're set as a {student_programme} student.")
